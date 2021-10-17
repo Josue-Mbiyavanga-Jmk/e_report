@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rapport_app/memory/preference.dart';
+import 'package:rapport_app/models/rapport.dart';
+import 'package:rapport_app/services/rapport_firebase_database.dart';
+import 'package:rapport_app/views/widgets/rapport_widget/list_rapport_widget.dart';
+
+class RapportListView extends StatefulWidget {
+  const RapportListView({Key? key}) : super(key: key);
+
+  @override
+  _RapportListViewState createState() => _RapportListViewState();
+}
+
+class _RapportListViewState extends State<RapportListView> {
+  //les variables
+  String role ="";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    role = UserSimplePreference.getUserRole() ?? "";
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamProvider<List<Rapport>>.value(
+      value: RapportDatabaseService(uid: '').rapports, //on a pas besoin de uid (chercher comment l'enlever)
+      initialData: [],
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          elevation: 0.0,
+          title: Text('Les rapports', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w800),),
+          centerTitle: true,
+          backgroundColor: Colors.blueGrey, //le titre depend d'où on doit partir.
+
+        ),
+        //etant le fils, il aura accès à le liste du parent
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10.0,
+              right: 10.0,
+              bottom: 20.0,
+            ),
+            child: RapportList(),
+          ),
+        ),
+        //le button (on affique pour d'autres role que le User)
+        floatingActionButton: role == "User" ? null : FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, '/addRapport', arguments: null),
+          backgroundColor: Colors.blueGrey,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+            size: 32,
+          ),
+        ),
+      ),
+    );
+  }
+}

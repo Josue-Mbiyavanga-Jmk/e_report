@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1028807983531",
+    "project_id": "e-report-mobile",
+    "storage_bucket": "e-report-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028807983531:android:c19135b57c7904a88212ee",
+        "android_client_info": {
+          "package_name": "com.example.rapport_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028807983531-air0k2m3sdoq7rvdr98jrleumgd528c7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr5yejATXvzp0roJ7fjiLLebIF1G2U53s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028807983531-air0k2m3sdoq7rvdr98jrleumgd528c7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
